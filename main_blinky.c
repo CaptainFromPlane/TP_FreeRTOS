@@ -102,8 +102,8 @@
  * milliseconds to ticks using the pdMS_TO_TICKS() macro. */
 #define mainTIMER_SEND_FREQUENCY_MS        pdMS_TO_TICKS( 2000UL )
 #define Task_1_FREQUENCY_MS                pdMS_TO_TICKS( 200UL )
-#define Task_2_FREQUENCY_MS                pdMS_TO_TICKS( 500UL )
-#define Task_3_FREQUENCY_MS                pdMS_TO_TICKS( 550UL )
+#define Task_2_FREQUENCY_MS                pdMS_TO_TICKS( 300UL )
+#define Task_3_FREQUENCY_MS                pdMS_TO_TICKS( 450UL )
 #define Task_4_FREQUENCY_MS                pdMS_TO_TICKS( 600UL )
 /* The number of items the queue can hold at once. */
 #define mainQUEUE_LENGTH                   ( 4 )
@@ -226,6 +226,7 @@ static void Task_1( void * pvParameters ) {
     
     TickType_t xNextWakeTime;
     const TickType_t xBlockTime = Task_1_FREQUENCY_MS;
+    
     /* Block for 100 ms */
     const TickType_t xDelay = pdMS_TO_TICKS( 100UL ) ;
 
@@ -271,8 +272,8 @@ static void Task_3( void * pvParameters ) {
     xNextWakeTime = xTaskGetTickCount();
     /* Avoid compiler warnings resulting from the unused parameter. */
     (void * ) pvParameters;
-    long a = 154568;
-    long b = 354862;
+    long a = 2036854775807;
+    long b = 2036854775807;
     for( ; ; )
     {
         vTaskDelayUntil( &xNextWakeTime, xBlockTime );
